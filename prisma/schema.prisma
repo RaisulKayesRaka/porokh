@@ -1,0 +1,222 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id              String           @id
+  name            String
+  email           String
+  emailVerified   Boolean          @default(false)
+  image           String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  sessions        Session[]
+  accounts        Account[]
+  rooms           Room[]
+  roomMembers     RoomMember[]
+  examSubmissions ExamSubmission[]
+  allowedExams    Exam[]           @relation("ExamAllowedExaminees")
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}
+
+enum RoomRole {
+  EXAMINER
+  EXAMINEE
+}
+
+model Room {
+  id          String       @id @default(cuid())
+  name        String
+  description String?
+  roomCode    String       @unique
+  ownerId     String
+  owner       User         @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  roomMembers RoomMember[]
+  exams       Exam[]
+
+  @@index([ownerId])
+  @@map("room")
+}
+
+model RoomMember {
+  id        String   @id @default(cuid())
+  roomId    String
+  room      Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      RoomRole
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([roomId, userId])
+  @@index([userId])
+  @@index([roomId])
+  @@map("room_member")
+}
+
+enum ExamStatus {
+  DRAFT
+  PUBLISHED
+  COMPLETED
+}
+
+model Exam {
+  id               String           @id @default(cuid())
+  roomId           String
+  room             Room             @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  title            String
+  description      String?
+  startTime        DateTime?
+  endTime          DateTime?
+  timeLimitMinutes Int?
+  status           ExamStatus       @default(DRAFT)
+  resultsPublished Boolean          @default(false)
+  isRestricted     Boolean          @default(false)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  questions        Question[]
+  submissions      ExamSubmission[]
+  allowedExaminees User[]           @relation("ExamAllowedExaminees")
+
+  @@index([roomId])
+  @@map("exam")
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  DESCRIPTIVE
+}
+
+model Question {
+  id            String       @id @default(cuid())
+  examId        String
+  exam          Exam         @relation(fields: [examId], references: [id], onDelete: Cascade)
+  type          QuestionType
+  text          String
+  points        Float        @default(1)
+  options       Json? // Stores array of strings for MCQ options
+  correctOption String? // The exact string or index of correct option
+  rubric        Json? // Stores rubric items for descriptive: [{criterion: string, marks: number}]
+  order         Int          @default(0)
+  answers       Answer[]
+
+  @@index([examId])
+  @@map("question")
+}
+
+enum SubmissionStatus {
+  IN_PROGRESS
+  SUBMITTED
+  GRADED
+}
+
+model ExamSubmission {
+  id                String           @id @default(cuid())
+  examId            String
+  exam              Exam             @relation(fields: [examId], references: [id], onDelete: Cascade)
+  examineeId        String
+  examinee          User             @relation(fields: [examineeId], references: [id], onDelete: Cascade)
+  status            SubmissionStatus @default(IN_PROGRESS)
+  score             Float?
+  penalty           Float            @default(0)
+  penaltyReason     String?
+  overallFeedback   String?          @db.Text
+  tabSwitchCount    Int              @default(0)
+  isResultPublished Boolean          @default(false)
+  startedAt         DateTime         @default(now())
+  submittedAt       DateTime?
+  answers           Answer[]
+
+  @@unique([examId, examineeId])
+  @@index([examId])
+  @@index([examineeId])
+  @@map("exam_submission")
+}
+
+model Answer {
+  id               String         @id @default(cuid())
+  submissionId     String
+  submission       ExamSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  questionId       String
+  question         Question       @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  textValue        String? // For descriptive answer
+  optionValue      String? // For MCQ
+  isCorrect        Boolean?
+  score            Float? // Manual grading or fractional scoring
+  feedback         String? // Examiner feedback/comments
+  aiScore          Float? // Score awarded by AI grading
+  aiRubricResult   Json? // Per-criterion AI results: [{criterion, marks, matched, reasoning}]
+  timeSpentSeconds Int            @default(0) // Time examinee dwelled on this specific question
+  pasteCount       Int            @default(0) // Number of times text was pasted into the answer field
+  pastedTextLength Int            @default(0) // Total number of characters pasted
+  attachments      Json? // Stores array of { url: string, publicId: string, name: string }
+  updatedAt        DateTime       @updatedAt
+
+  @@unique([submissionId, questionId])
+  @@index([submissionId])
+  @@index([questionId])
+  @@map("answer")
+}
