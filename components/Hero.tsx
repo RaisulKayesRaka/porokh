@@ -4,13 +4,12 @@ import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <div className="bg-background relative overflow-hidden pt-20 pb-16 md:pt-[120px] md:pb-[100px]">
-      <div className="from-border/20 via-background to-background pointer-events-none absolute top-0 left-1/2 h-[500px] w-full -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]" />
-      <div className="relative z-10 container mx-auto flex max-w-7xl flex-col items-center px-4 text-center md:px-8">
+    <div className="w-full bg-background relative overflow-hidden pt-20 pb-16 md:pt-[120px] md:pb-[100px] border-b">
+      <div className="container relative z-10 mx-auto flex max-w-7xl flex-col items-center px-4 text-center md:px-8">
         {/* Badge */}
         <Badge
-          variant="outline"
-          className="border-border/50 bg-background/50 mb-6 rounded-full px-4 py-1.5 text-sm font-medium backdrop-blur-sm"
+          variant="secondary"
+          className="mb-6 rounded-full px-4 py-1 text-sm font-medium"
         >
           <span className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
@@ -22,11 +21,9 @@ export function Hero() {
         </Badge>
 
         {/* Headline */}
-        <h1 className="text-foreground mb-6 max-w-4xl text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="text-foreground mb-6 max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
           The Modern Way to Conduct <br className="hidden md:block" />
-          <span className="from-foreground to-foreground/50 bg-gradient-to-r bg-clip-text text-transparent">
-            Examinations
-          </span>
+          Examinations
         </h1>
 
         {/* Subheadline */}

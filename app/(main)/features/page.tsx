@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Features — Porokh",
@@ -12,7 +13,7 @@ const features = [
   {
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455-2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
       </svg>
     ),
     title: "AI-Powered Grading",
@@ -103,21 +104,15 @@ const features = [
 
 export default function FeaturesPage() {
   return (
-    <div className="bg-background relative overflow-hidden">
-      {/* Background radial glow */}
-      <div className="from-border/20 via-background to-background pointer-events-none absolute top-0 left-1/2 h-[600px] w-full -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]" />
-
-      <div className="relative z-10 container mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+    <div className="bg-background">
+      <div className="container mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
         {/* Header */}
         <div className="mx-auto mb-16 max-w-3xl text-center md:mb-20">
           <p className="text-muted-foreground mb-3 text-sm font-semibold uppercase tracking-widest">
             Platform Capabilities
           </p>
-          <h1 className="text-foreground mb-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Everything you need to{" "}
-            <span className="from-foreground to-foreground/50 bg-gradient-to-r bg-clip-text text-transparent">
-              conduct exams
-            </span>
+          <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tight sm:text-5xl">
+            Everything you need to conduct exams
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
             Porokh comes packed with features designed for examiners and
@@ -129,23 +124,21 @@ export default function FeaturesPage() {
         {/* Feature Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, i) => (
-            <div
-              key={i}
-              className="group bg-card hover:border-foreground/15 relative rounded-xl border p-6 transition-all duration-300 hover:shadow-lg"
-            >
-              {/* Icon */}
-              <div className="bg-muted text-foreground mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg transition-colors group-hover:bg-foreground group-hover:text-background">
-                {feature.icon}
-              </div>
-
-              {/* Content */}
-              <h3 className="text-foreground mb-2 text-lg font-semibold">
-                {feature.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
+            <Card key={i} className="transition-shadow hover:shadow-md">
+              <CardHeader>
+                <div className="bg-primary/10 text-primary mb-2 inline-flex h-11 w-11 items-center justify-center rounded-lg">
+                  {feature.icon}
+                </div>
+                <CardTitle className="text-xl">
+                  {feature.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {feature.description}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
 

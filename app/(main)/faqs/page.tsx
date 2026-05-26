@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FAQAccordion } from "@/components/faq-accordion";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "FAQs — Porokh",
@@ -124,21 +125,15 @@ const faqCategories = [
 
 export default function FAQsPage() {
   return (
-    <div className="bg-background relative overflow-hidden">
-      {/* Background radial glow */}
-      <div className="from-border/20 via-background to-background pointer-events-none absolute top-0 left-1/2 h-[600px] w-full -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]" />
-
-      <div className="relative z-10 container mx-auto max-w-4xl px-4 py-20 md:px-8 md:py-28">
+    <div className="bg-background w-full">
+      <div className="container mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
         {/* Header */}
         <div className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
           <p className="text-muted-foreground mb-3 text-sm font-semibold uppercase tracking-widest">
             Support
           </p>
-          <h1 className="text-foreground mb-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Frequently Asked{" "}
-            <span className="from-foreground to-foreground/50 bg-gradient-to-r bg-clip-text text-transparent">
-              Questions
-            </span>
+          <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tight sm:text-5xl">
+            Frequently Asked Questions
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed">
             Everything you need to know about using Porokh. Can&apos;t find what
@@ -150,23 +145,25 @@ export default function FAQsPage() {
         <FAQAccordion categories={faqCategories} />
 
         {/* CTA */}
-        <div className="bg-card mt-16 flex flex-col items-center gap-4 rounded-xl border p-8 text-center md:mt-20 md:p-12">
-          <h2 className="text-foreground text-2xl font-bold">
-            Still have questions?
-          </h2>
-          <p className="text-muted-foreground max-w-md">
-            Jump right in and explore the platform yourself — it&apos;s the
-            fastest way to find answers.
-          </p>
-          <div className="flex gap-3">
-            <Button asChild size="lg">
-              <Link href="/signup">Get Started Free</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/features">View Features</Link>
-            </Button>
-          </div>
-        </div>
+        <Card className="mt-16 text-center md:mt-20">
+          <CardContent className="p-8 md:p-12 flex flex-col items-center gap-4">
+            <h2 className="text-foreground text-2xl font-bold">
+              Still have questions?
+            </h2>
+            <p className="text-muted-foreground max-w-md">
+              Jump right in and explore the platform yourself — it&apos;s the
+              fastest way to find answers.
+            </p>
+            <div className="flex gap-3">
+              <Button asChild size="lg">
+                <Link href="/signup">Get Started Free</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/features">View Features</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

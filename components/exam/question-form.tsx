@@ -178,15 +178,17 @@ export function QuestionForm({
 
               {fields.map((field, index) => {
                 const opt = options[index];
+                const optionId = opt?.id || field.id;
+                
                 return (
                   <div key={field.id} className="flex flex-col gap-2 rounded-md border p-3">
                     <div className="flex items-center gap-3">
                       <input
                         type="radio"
-                        value={field.id}
+                        value={optionId}
                         {...register("correctOption")}
                         className="text-primary focus:ring-primary h-4 w-4"
-                        checked={correctOptionVal === field.id}
+                        checked={correctOptionVal === optionId}
                       />
                       <Input
                         placeholder={`Option ${index + 1} text`}
@@ -195,7 +197,6 @@ export function QuestionForm({
                       <input 
                         type="hidden" 
                         {...register(`options.${index}.id` as const)} 
-                        value={field.id} 
                       />
                       <Button 
                         type="button" 
