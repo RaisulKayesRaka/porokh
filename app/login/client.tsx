@@ -37,14 +37,9 @@ export default function LoginPage() {
   const [isVerifying, setIsVerifying] = useState(false);
   const [isResending, setIsResending] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  async function login(email: string, password: string) {
     setError(null);
     setIsLoading(true);
-
-    const formData = new FormData(e.currentTarget);
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
 
     const res = await signIn.email({
       email,
@@ -62,6 +57,14 @@ export default function LoginPage() {
     } else {
       router.push("/dashboard");
     }
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    await login(email, password);
   }
 
   async function handleVerifyOtp() {
@@ -173,6 +176,40 @@ export default function LoginPage() {
                   {isLoading && <Spinner data-icon="inline-start" />}
                   {isLoading ? "Logging in..." : "Log in"}
                 </Button>
+
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-background text-muted-foreground px-2">
+                      Or continue with demo
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <Button
+                    variant="outline"
+                    type="button"
+                    onClick={() =>
+                      login("raisulkayesofficial@gmail.com", "Password@123")
+                    }
+                    disabled={isLoading}
+                  >
+                    Examiner
+                  </Button>
+                  <Button
+                    variant="outline"
+                    type="button"
+                    onClick={() =>
+                      login("raka22205101402@diu.edu.bd", "Password@123")
+                    }
+                    disabled={isLoading}
+                  >
+                    Examinee
+                  </Button>
+                </div>
               </div>
             </form>
           )}
