@@ -212,7 +212,7 @@ export function GradeSubmission({
       toast.error(error.message || "Failed to toggle result status.");
     } else {
       toast.success(
-        `Result ${!submission.isResultPublished ? "published to student" : "unpublished"}.`,
+        `Result ${!submission.isResultPublished ? "published to examinee" : "unpublished"}.`,
       );
       router.refresh();
     }
@@ -359,7 +359,7 @@ export function GradeSubmission({
                               <div className="space-y-2">
                                 <h4 className="font-medium leading-none text-sm">Activity Details</h4>
                                 <p className="text-sm text-muted-foreground">
-                                  Insights about the student&apos;s activity for this question.
+                                  Insights about the examinee&apos;s activity for this question.
                                 </p>
                               </div>
                               <div className="flex flex-col gap-2">
@@ -609,7 +609,7 @@ export function GradeSubmission({
                           Examiner Feedback (Optional)
                         </span>
                         <Textarea
-                          placeholder="Provide feedback or remarks for the student..."
+                          placeholder="Provide feedback or remarks for the examinee..."
                           value={feedbacks[answer.id]}
                           onChange={(e) =>
                             setFeedbacks((prev) => ({
@@ -777,7 +777,7 @@ export function GradeSubmission({
                 </div>
                 <div className="mt-2 flex items-center justify-between">
                   <span className="text-muted-foreground text-sm font-medium">
-                    Student Visibility
+                    Examinee Visibility
                   </span>
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-muted-foreground font-medium">
@@ -873,7 +873,7 @@ export function GradeSubmission({
                 Overall Feedback
               </span>
               <Textarea
-                placeholder="Leave a final cohesive comment for the student here..."
+                placeholder="Leave a final cohesive comment for the examinee here..."
                 value={overallFeedback}
                 onChange={(e) => setOverallFeedback(e.target.value)}
                 className="min-h-[100px] text-sm"

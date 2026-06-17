@@ -10,7 +10,7 @@ const categories = [
       },
       {
         q: "Is it free to use?",
-        a: "We offer a generous free tier for individual educators, with professional plans for larger institutions.",
+        a: "We offer a generous free tier for individual examiners, with professional plans for larger organizations.",
       },
     ],
   },
@@ -22,7 +22,7 @@ const categories = [
         a: "We use a combination of tab-switching detection, copy-paste restrictions, and randomized question orders.",
       },
       {
-        q: "Can I restrict access to certain students?",
+        q: "Can I restrict access to certain examinees?",
         a: "Yes, you can create restricted exams that only specific members of your room can access.",
       },
     ],

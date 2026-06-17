@@ -44,7 +44,7 @@ export default function TermsOfServicePage() {
                 <div>
                   <h2 className="text-2xl font-bold mb-4">2. Use License</h2>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    Permission is granted to temporarily use the services provided by Porokh for personal or institutional educational purposes. This is the grant of a license, not a transfer of title, and under this license you may not:
+                    Permission is granted to temporarily use the services provided by Porokh for personal or professional assessment purposes. This is the grant of a license, not a transfer of title, and under this license you may not:
                   </p>
                   <ul className="list-disc pl-6 text-muted-foreground space-y-2">
                     <li>Attempt to decompile or reverse engineer any software contained on Porokh's website.</li>
@@ -66,9 +66,9 @@ export default function TermsOfServicePage() {
                 <Separator />
 
                 <div>
-                  <h2 className="text-2xl font-bold mb-4">4. Content and Academic Integrity</h2>
+                  <h2 className="text-2xl font-bold mb-4">4. Content and Assessment Integrity</h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    Users are solely responsible for the content they upload to the platform. Porokh provides tools for academic assessment but does not guarantee the accuracy or quality of user-generated exam content. We support academic integrity and reserve the right to terminate accounts involved in systematic cheating or platform abuse.
+                    Users are solely responsible for the content they upload to the platform. Porokh provides tools for assessment but does not guarantee the accuracy or quality of user-generated exam content. We support assessment integrity and reserve the right to terminate accounts involved in systematic cheating or platform abuse.
                   </p>
                 </div>
 

@@ -14,12 +14,12 @@ const features = [
   },
   {
     title: "Real-time Monitoring",
-    description: "Keep track of student progress and behavior in real-time while the exam is in progress.",
+    description: "Keep track of examinee progress and behavior in real-time while the exam is in progress.",
     icon: Users,
   },
   {
     title: "Advanced Analytics",
-    description: "Get deep insights into student performance with automated charts and performance reports.",
+    description: "Get deep insights into examinee performance with automated charts and performance reports.",
     icon: BarChart3,
   },
   {
@@ -29,7 +29,7 @@ const features = [
   },
   {
     title: "Instant Feedback",
-    description: "Provide students with immediate results and detailed feedback upon exam completion.",
+    description: "Provide examinees with immediate results and detailed feedback upon exam completion.",
     icon: CheckCircle2,
   },
 ];
@@ -39,7 +39,7 @@ export function FeaturesSection() {
     <section id="features" className="w-full py-20 bg-background border-b">
       <div className="container mx-auto max-w-7xl px-4 md:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">Powerful Features for Modern Education</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">Powerful Features for Modern Assessments</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Everything you need to conduct secure, efficient, and insightful examinations in one unified platform.
           </p>

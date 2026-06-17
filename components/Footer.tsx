@@ -22,7 +22,7 @@ export function Footer() {
             </Link>
             <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
               The modern, secure, and intuitive examination system designed for
-              educational institutions to streamline testing.
+              organizations and individuals to streamline testing.
             </p>
           </div>
 

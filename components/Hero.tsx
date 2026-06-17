@@ -29,8 +29,7 @@ export function Hero() {
         {/* Subheadline */}
         <p className="text-muted-foreground mt-4 mb-10 max-w-2xl text-lg leading-relaxed md:text-xl">
           Streamline your testing process with our secure, intuitive, and highly
-          scalable examination platform. Built for the modern educational
-          institution.
+          scalable examination platform. Built for the modern organization.
         </p>
 
         {/* Calls to Action */}

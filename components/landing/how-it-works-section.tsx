@@ -2,7 +2,7 @@ const steps = [
   {
     number: "01",
     title: "Create a Room",
-    description: "Set up a dedicated space for your class or course and invite students using a unique room code.",
+    description: "Set up a dedicated space for your assessments and invite examinees using a unique room code.",
   },
   {
     number: "02",
@@ -12,12 +12,12 @@ const steps = [
   {
     number: "03",
     title: "Start & Monitor",
-    description: "Publish your exam and monitor student activity in real-time with built-in security features.",
+    description: "Publish your exam and monitor examinee activity in real-time with built-in security features.",
   },
   {
     number: "04",
     title: "Grade & Analyze",
-    description: "Let AI assist with grading and review detailed performance analytics for your entire class.",
+    description: "Let AI assist with grading and review detailed performance analytics for your entire group.",
   },
 ];
 

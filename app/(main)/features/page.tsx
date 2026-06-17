@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export const metadata: Metadata = {
   title: "Features — Porokh",
   description:
-    "Discover the powerful features that make Porokh the modern, AI-assisted examination platform for educational institutions.",
+    "Discover the powerful features that make Porokh the modern, AI-assisted examination platform for organizations and individuals.",
 };
 
 const features = [

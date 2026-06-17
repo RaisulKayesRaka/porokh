@@ -24,7 +24,7 @@ export function PublishResultsToggle({ examId, initialPublished }: PublishResult
     if (result.error) {
       toast.error(result.error.message || "Failed to update result visibility.");
     } else {
-      toast.success(checked ? "Results are now visible to students." : "Results have been hidden from students.");
+      toast.success(checked ? "Results are now visible to examinees." : "Results have been hidden from examinees.");
       router.refresh();
     }
   };

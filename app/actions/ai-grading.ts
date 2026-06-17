@@ -130,16 +130,16 @@ export async function aiGradeDescriptiveAnswer(answerId: string) {
       .map((item, i) => `${i + 1}. "${item.criterion}" — ${item.marks} marks`)
       .join("\n");
 
-    const promptText = `You are an exam grading assistant. Evaluate the following student answer against each rubric criterion.
+    const promptText = `You are an exam grading assistant. Evaluate the following examinee answer against each rubric criterion.
 
 **Question:** ${answer.question.text}
 
-**Student Answer Text:** ${answerText || "(No text provided)"}
+**Examinee Answer Text:** ${answerText || "(No text provided)"}
 
 **Rubric Criteria:**
 ${rubricDescription}
 
-For each criterion, determine if the student's answer sufficiently addresses the concept described. Be fair but thorough — the answer doesn't need to use the exact same words, but must clearly demonstrate understanding of each criterion's concept.
+For each criterion, determine if the examinee's answer sufficiently addresses the concept described. Be fair but thorough — the answer doesn't need to use the exact same words, but must clearly demonstrate understanding of each criterion's concept.
 
 Return your evaluation for each criterion.`;
 

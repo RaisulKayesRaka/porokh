@@ -16,7 +16,7 @@ const faqCategories = [
     questions: [
       {
         q: "What is Porokh?",
-        a: "Porokh is an AI-assisted online examination and evaluation platform designed for educational institutions. It lets examiners create, conduct, and grade exams — while examinees take them in a secure, proctored environment.",
+        a: "Porokh is an AI-assisted online examination and evaluation platform designed for organizations and individuals. It lets examiners create, conduct, and grade exams — while examinees take them in a secure, proctored environment.",
       },
       {
         q: "Is Porokh free to use?",
@@ -24,7 +24,7 @@ const faqCategories = [
       },
       {
         q: "Who can use Porokh?",
-        a: "Porokh is built for examiners and examinees alike. Anyone conducting assessments — from schools to coaching centers — can benefit from the platform.",
+        a: "Porokh is built for examiners and examinees alike. Anyone conducting assessments — from academic institutions to corporate training departments — can benefit from the platform.",
       },
     ],
   },
@@ -75,7 +75,7 @@ const faqCategories = [
     questions: [
       {
         q: "What is a room?",
-        a: "A room is a shared space where examiners organize exams and examinees join using a unique room code. Think of it as a virtual classroom for assessments.",
+        a: "A room is a shared space where examiners organize exams and examinees join using a unique room code. Think of it as a virtual assessment space.",
       },
       {
         q: "How do examinees join a room?",

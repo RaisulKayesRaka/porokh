@@ -1,15 +1,15 @@
 # Porokh
 
-Porokh is a modern, AI-assisted online examination and evaluation platform designed for educational institutions and corporate training. It provides a comprehensive suite of tools for examiners to create, proctor, and grade exams, while offering examinees a secure and intuitive testing environment.
+Porokh is a modern, AI-assisted online examination and evaluation platform designed for organizations and individuals. It provides a comprehensive suite of tools for examiners to create, proctor, and grade exams, while offering examinees a secure and intuitive testing environment.
 
 ## 🚀 Key Features
 
-- **Virtual Classrooms**: Organize assessments into "Rooms" with unique join codes and role-based access control.
+- **Assessment Rooms**: Organize assessments into "Rooms" with unique join codes and role-based access control.
 - **Advanced Exam Builder**: Create questions using a Tiptap-powered rich text editor with native LaTeX support for math formulas.
 - **AI-Powered Grading**: Automatically evaluate descriptive answers against custom rubrics using Google Gemini AI with vision support.
 - **Robust Proctoring**: Monitor tab switches, track text pasting, and log time spent on individual questions to ensure integrity.
 - **Automated Collection**: Submissions are automatically collected when time limits or global end times are reached.
-- **Real-time Analytics**: Track class performance with metrics like average, median, and question-specific difficulty ratings.
+- **Real-time Analytics**: Track overall performance with metrics like average, median, and question-specific difficulty ratings.
 - **Secure Authentication**: Robust user management and secure sessions powered by Better Auth.
 - **Ownership & Collaboration**: Transfer room ownership or add multiple examiners to collaborate on grading.
 - **Selective Publishing**: Control precisely when results and individual grades are visible to examinees.

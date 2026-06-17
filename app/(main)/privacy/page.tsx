@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
                     <ul className="list-disc pl-6 text-muted-foreground space-y-2">
                       <li>Name and contact data (Email address, name).</li>
                       <li>Credentials (Passwords and similar security information used for authentication).</li>
-                      <li>Profile information (Profile picture, institutional affiliation).</li>
+                      <li>Profile information (Profile picture, organization affiliation).</li>
                     </ul>
                     
                     <h3 className="text-xl font-semibold mt-6">Examination Data</h3>
@@ -60,7 +60,7 @@ export default function PrivacyPolicyPage() {
                     </p>
                     <ul className="list-disc pl-6 text-muted-foreground space-y-2">
                       <li>Exam content (questions, answers, media).</li>
-                      <li>Student submissions and results.</li>
+                      <li>Examinee submissions and results.</li>
                       <li>Grading data and AI-generated feedback.</li>
                     </ul>
                   </div>

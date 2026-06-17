@@ -77,7 +77,7 @@ export function DeleteExamDialog({
           <AlertDialogDescription>
             Are you absolutely sure you want to delete the exam{" "}
             <span className="font-semibold text-foreground">&quot;{examTitle}&quot;</span>? 
-            This action cannot be undone. All questions, student submissions, and grades will be permanently erased.
+            This action cannot be undone. All questions, examinee submissions, and grades will be permanently erased.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
