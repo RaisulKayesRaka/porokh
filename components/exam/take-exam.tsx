@@ -426,7 +426,7 @@ export function TakeExamClient({
       )}
 
       {/* Question Area */}
-      <Card className="border-primary/20 flex min-h-75 flex-col shadow-lg sm:min-h-100">
+      <Card className="border-primary/20 flex min-h-75 flex-col  sm:min-h-100">
         <CardHeader className="bg-muted/10 border-b">
           <div className="flex items-start justify-between">
             <Badge variant="outline">
@@ -456,7 +456,7 @@ export function TakeExamClient({
               {(currentQuestion.options as OptionType[]).map((opt) => (
                 <div
                   key={opt.id}
-                  className={`flex items-start space-x-3 rounded-lg border p-4 transition-colors ${answers[currentQuestion.id] === opt.id ? "bg-primary/5 border-primary shadow-sm" : "hover:bg-muted/50"}`}
+                  className={`flex items-start space-x-3 rounded-lg border p-4 transition-colors ${answers[currentQuestion.id] === opt.id ? "bg-primary/5 border-primary " : "hover:bg-muted/50"}`}
                 >
                   <RadioGroupItem
                     value={opt.id}
@@ -478,7 +478,7 @@ export function TakeExamClient({
                         <img
                           src={opt.imageUrl}
                           alt="Option"
-                          className="max-h-48 rounded-md border shadow-sm"
+                          className="max-h-48 rounded-md border "
                         />
                       </div>
                     )}

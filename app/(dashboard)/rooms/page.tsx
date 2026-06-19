@@ -109,7 +109,7 @@ export default async function RoomsPage() {
                 return (
                   <Card
                     key={room.id}
-                    className="group relative flex flex-col transition-shadow hover:shadow-md"
+                    className="group relative flex flex-col bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl   hover:-translate-y-1 hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300"
                   >
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between gap-2">
@@ -162,7 +162,7 @@ export default async function RoomsPage() {
                       </div>
                     </CardContent>
 
-                    <CardFooter className="border-t pt-3">
+                    <CardFooter className="border-t border-black/[0.08] dark:border-white/[0.08] pt-3">
                       <div className="flex w-full items-center justify-between">
                         <span className="text-muted-foreground text-xs">
                           Created{" "}

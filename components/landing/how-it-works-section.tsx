@@ -1,43 +1,63 @@
 const steps = [
   {
-    number: "01",
+    number: 1,
     title: "Create a Room",
-    description: "Set up a dedicated space for your assessments and invite examinees using a unique room code.",
+    description:
+      "Set up your assessment space and share the unique room code with your group.",
   },
   {
-    number: "02",
-    title: "Design Your Exam",
-    description: "Use our intuitive builder to add multiple choice or descriptive questions and set time limits.",
+    number: 2,
+    title: "Build Your Exam",
+    description:
+      "Use our rich editor to add MCQ and descriptive questions with LaTeX math support.",
   },
   {
-    number: "03",
-    title: "Start & Monitor",
-    description: "Publish your exam and monitor examinee activity in real-time with built-in security features.",
+    number: 3,
+    title: "Proctor & Monitor",
+    description:
+      "Launch with built-in security — tab tracking, paste detection, and time limits.",
   },
   {
-    number: "04",
-    title: "Grade & Analyze",
-    description: "Let AI assist with grading and review detailed performance analytics for your entire group.",
+    number: 4,
+    title: "Grade with AI",
+    description:
+      "Let AI evaluate answers against your rubrics, or review and adjust manually.",
   },
 ];
 
-export function HowItWorksSection() {
+export default function HowItWorksSection() {
   return (
-    <section className="w-full py-20 bg-background border-b">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">How It Works</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Get your examination room up and running in just a few simple steps.
+    <section id="how-it-works" className="bg-background py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-6 md:px-8">
+        {/* Section Header */}
+        <div className="mb-16 text-center md:mb-20">
+          <p className="text-primary mb-4 text-sm font-semibold uppercase tracking-widest">
+            How It Works
+          </p>
+          <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            Get Started in Minutes
+          </h2>
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-relaxed md:text-xl">
+            Four simple steps to transform your assessment workflow.
           </p>
         </div>
-        <div className="grid gap-12 lg:grid-cols-4 md:grid-cols-2">
+
+        {/* Steps Grid */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:gap-6">
           {steps.map((step, index) => (
-            <div key={index} className="flex flex-col">
-              <div className="text-sm font-bold text-primary mb-4 bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center">
-                {index + 1}
+            <div key={step.number} className="relative text-center">
+              {/* Connecting Line (desktop only, between steps) */}
+              {index < steps.length - 1 && (
+                <div className="absolute top-5 left-[calc(50%+24px)] hidden h-px w-[calc(100%-48px)] bg-gradient-to-r from-violet-300 to-indigo-300 md:block dark:from-violet-800 dark:to-indigo-800" />
+              )}
+
+              {/* Step Number Circle */}
+              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-sm font-bold text-white  ">
+                {step.number}
               </div>
-              <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+
+              {/* Step Content */}
+              <h3 className="mt-4 mb-2 text-lg font-semibold">{step.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {step.description}
               </p>

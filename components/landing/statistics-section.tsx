@@ -1,26 +1,31 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+const stats = [
+  { value: "10K+", label: "Exams Created" },
+  { value: "50K+", label: "Questions Built" },
+  { value: "99.9%", label: "Uptime" },
+  { value: "<5s", label: "Avg. Grading Time" },
+];
 
-export function StatisticsSection() {
-  const stats = [
-    { label: "Exams Conducted", value: "1M+" },
-    { label: "Active Institutions", value: "500+" },
-    { label: "Questions Created", value: "10M+" },
-    { label: "Uptime Guarantee", value: "99.9%" },
-  ];
-
+export default function StatisticsSection() {
   return (
-    <section className="w-full py-20 bg-background border-b">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="bg-gradient-to-r from-violet-600 to-indigo-600 py-16 md:py-20 dark:from-violet-700 dark:to-indigo-700">
+      <div className="container mx-auto max-w-7xl px-6 md:px-8">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {stats.map((stat, index) => (
-            <Card key={index} className="text-center">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-3xl md:text-4xl font-bold">{stat.value}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground font-medium uppercase tracking-wider text-xs">{stat.label}</p>
-              </CardContent>
-            </Card>
+            <div
+              key={stat.label}
+              className={`text-center ${
+                index > 0
+                  ? "md:border-l md:border-white/20 md:pl-8"
+                  : ""
+              }`}
+            >
+              <p className="text-4xl font-extrabold text-white md:text-5xl">
+                {stat.value}
+              </p>
+              <p className="mt-2 text-sm font-medium uppercase tracking-wider text-white/70">
+                {stat.label}
+              </p>
+            </div>
           ))}
         </div>
       </div>

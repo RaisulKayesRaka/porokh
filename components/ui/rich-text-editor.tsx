@@ -52,12 +52,12 @@ const CustomImageNode = ({ node, deleteNode, editor }: CustomImageNodeProps) => 
   return (
     <NodeViewWrapper className="relative group inline-block max-w-full my-4">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={node.attrs.src} alt={node.attrs.alt} className="max-w-full max-h-87.5 object-contain rounded-md border shadow-sm" />
+      <img src={node.attrs.src} alt={node.attrs.alt} className="max-w-full max-h-87.5 object-contain rounded-md border " />
       {editor.isEditable && (
         <Button
           variant="destructive"
           size="icon"
-          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8 shadow-sm"
+          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8 "
           onClick={() => deleteNode()}
         >
           <Trash className="size-4" />

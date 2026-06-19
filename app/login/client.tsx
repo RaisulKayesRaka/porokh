@@ -99,8 +99,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center p-4 font-sans">
-      <Card className="w-full max-w-sm">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center p-4 font-sans overflow-hidden bg-gradient-to-b from-violet-50/50 to-background dark:from-violet-950/20 dark:to-background">
+      <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(124,58,237,0.08)_1px,_transparent_1px)] dark:bg-[radial-gradient(circle,_rgba(139,92,246,0.04)_1px,_transparent_1px)] bg-[size:24px_24px]" />
+      <div className="animate-fade-up z-10 w-full max-w-sm">
+        <Card className="w-full max-w-sm bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08]  rounded-2xl">
         <CardHeader>
           <div className="mt-2 mb-4 flex w-full justify-center">
             <Link href="/" className="flex items-center space-x-2">
@@ -333,6 +335,7 @@ export default function LoginPage() {
           </div>
         </CardFooter>
       </Card>
+      </div>
     </div>
   );
 }

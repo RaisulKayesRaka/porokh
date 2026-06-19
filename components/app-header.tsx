@@ -50,7 +50,7 @@ export function AppHeader({ title, children, showBreadcrumbs = false }: AppHeade
   });
 
   return (
-    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 border-b px-4 backdrop-blur transition-all">
+    <header className="bg-white/40 dark:bg-black/20 supports-[backdrop-filter]:bg-white/40 dark:supports-[backdrop-filter]:bg-black/20 sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 border-b border-black/[0.08] dark:border-white/[0.08] px-4 backdrop-blur-md transition-all">
       <div className="flex flex-1 items-center gap-2 overflow-hidden">
         <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mr-1.5 h-4 !self-center" />

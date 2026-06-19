@@ -73,7 +73,7 @@ export default async function NewExamPage({
         </div>
       </div>
 
-      <div className="bg-card text-card-foreground rounded-xl border shadow">
+      <div className="bg-card text-card-foreground rounded-xl border ">
         <div className="p-6">
           <CreateExamForm roomId={roomId} examinees={examinees} />
         </div>

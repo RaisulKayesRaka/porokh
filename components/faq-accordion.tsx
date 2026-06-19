@@ -14,10 +14,10 @@ type FAQCategory = {
 
 export function FAQAccordion({ categories }: { categories: FAQCategory[] }) {
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
       {categories.map((cat, catIndex) => (
         <div key={catIndex}>
-          <h2 className="text-foreground mb-4 text-xl font-bold tracking-tight">
+          <h2 className="text-foreground text-xl font-bold tracking-tight mb-4">
             {cat.category}
           </h2>
           <Accordion type="multiple" className="w-full">
@@ -27,7 +27,7 @@ export function FAQAccordion({ categories }: { categories: FAQCategory[] }) {
                 value={`${catIndex}-${faqIndex}`}
                 className="border-border/50"
               >
-                <AccordionTrigger className="text-left text-base font-medium hover:no-underline">
+                <AccordionTrigger className="text-left text-base font-medium hover:no-underline hover:text-primary transition-colors py-5">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">

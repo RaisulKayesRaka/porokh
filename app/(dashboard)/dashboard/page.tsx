@@ -75,7 +75,7 @@ export default async function DashboardPage() {
       <div className="space-y-8 p-4 sm:p-6">
         {/* Three Stat Cards */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <Card>
+          <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl   hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardDescription className="text-sm font-medium">Rooms</CardDescription>
               <Boxes className="text-muted-foreground h-4 w-4" />
@@ -88,7 +88,7 @@ export default async function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className={activeExams.length > 0 ? "border-green-500/30 bg-green-500/5" : ""}>
+          <Card className={`bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl   transition-all duration-300 ${activeExams.length > 0 ? "border-green-500/30 bg-green-500/5 dark:bg-green-500/10 hover:border-green-500/50" : "hover:border-violet-500/30 dark:hover:border-violet-400/20"}`}>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardDescription className={`text-sm font-medium ${activeExams.length > 0 ? "text-green-700 dark:text-green-400" : ""}`}>
                 Active Exams
@@ -105,7 +105,7 @@ export default async function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl   hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardDescription className="text-sm font-medium">Upcoming Exams</CardDescription>
               <CalendarClock className="text-muted-foreground h-4 w-4" />
@@ -124,7 +124,7 @@ export default async function DashboardPage() {
           <h3 className="text-lg font-semibold tracking-tight">Active Exams</h3>
 
           {activeExams.length === 0 ? (
-            <Card>
+            <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl  border-dashed">
               <CardContent className="flex flex-col items-center justify-center py-10 text-center">
                 <Zap className="text-muted-foreground mb-3 h-8 w-8 opacity-30" />
                 <p className="text-muted-foreground text-sm">
@@ -139,7 +139,7 @@ export default async function DashboardPage() {
 
                 return (
                   <Link key={exam.id} href={`/rooms/${exam.roomId}/exams/${exam.id}`}>
-                    <Card className="group border-green-500/20 transition-shadow hover:shadow-md">
+                    <Card className="group bg-white/80 dark:bg-white/5 backdrop-blur-xl border-green-500/30 dark:border-green-500/20 rounded-2xl   hover:-translate-y-1 transition-all duration-300">
                       <CardHeader className="pb-2">
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">
@@ -190,7 +190,7 @@ export default async function DashboardPage() {
           <h3 className="text-lg font-semibold tracking-tight">Upcoming Exams</h3>
 
           {upcomingExams.length === 0 ? (
-            <Card>
+            <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl  border-dashed">
               <CardContent className="flex flex-col items-center justify-center py-10 text-center">
                 <CalendarClock className="text-muted-foreground mb-3 h-8 w-8 opacity-30" />
                 <p className="text-muted-foreground text-sm">
@@ -205,7 +205,7 @@ export default async function DashboardPage() {
 
                 return (
                   <Link key={exam.id} href={`/rooms/${exam.roomId}/exams/${exam.id}`}>
-                    <Card className="group transition-shadow hover:shadow-md">
+                    <Card className="group bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl   hover:-translate-y-1 hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300">
                       <CardHeader className="pb-2">
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">

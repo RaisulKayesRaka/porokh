@@ -87,7 +87,7 @@ export default async function EditExamSettingsPage({
         </div>
       </div>
 
-      <div className="bg-card text-card-foreground rounded-xl border p-6 shadow">
+      <div className="bg-card text-card-foreground rounded-xl border p-6 ">
         <EditExamSettingsForm exam={exam} examinees={examinees} />
       </div>
     </div>

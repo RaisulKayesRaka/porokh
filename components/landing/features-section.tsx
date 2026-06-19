@@ -1,64 +1,86 @@
-import { CheckCircle2, Shield, Zap, BarChart3, Users, Layout } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Sparkles,
+  ShieldCheck,
+  FileText,
+  BarChart3,
+  Users,
+  Clock,
+} from "lucide-react";
 
 const features = [
   {
-    title: "Secure Environment",
-    description: "Built-in tab-switching detection and copy-paste restrictions to ensure exam integrity.",
-    icon: Shield,
-  },
-  {
+    icon: Sparkles,
     title: "AI-Powered Grading",
-    description: "Automate the grading of descriptive answers with advanced AI, saving hours of manual work.",
-    icon: Zap,
+    description:
+      "Grade descriptive answers in seconds with AI that understands rubrics, context, and nuance.",
   },
   {
-    title: "Real-time Monitoring",
-    description: "Keep track of examinee progress and behavior in real-time while the exam is in progress.",
-    icon: Users,
+    icon: ShieldCheck,
+    title: "Secure Proctoring",
+    description:
+      "Monitor tab switches, detect paste events, and maintain exam integrity — automatically.",
   },
   {
-    title: "Advanced Analytics",
-    description: "Get deep insights into examinee performance with automated charts and performance reports.",
+    icon: FileText,
+    title: "Rich Question Builder",
+    description:
+      "Craft questions with rich text, LaTeX math formulas, and embedded images.",
+  },
+  {
     icon: BarChart3,
+    title: "Smart Analytics",
+    description:
+      "Visualize performance with per-question insights, score distributions, and trend analysis.",
   },
   {
-    title: "Custom Question Builder",
-    description: "Create multiple choice, descriptive, and interactive questions with ease.",
-    icon: Layout,
+    icon: Users,
+    title: "Room-Based Organization",
+    description:
+      "Create assessment rooms with unique codes, role-based access, and team collaboration.",
   },
   {
-    title: "Instant Feedback",
-    description: "Provide examinees with immediate results and detailed feedback upon exam completion.",
-    icon: CheckCircle2,
+    icon: Clock,
+    title: "Timed Assessments",
+    description:
+      "Set durations with auto-submission, live countdown timers, and deadline enforcement.",
   },
 ];
 
-export function FeaturesSection() {
+export default function FeaturesSection() {
   return (
-    <section id="features" className="w-full py-20 bg-background border-b">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">Powerful Features for Modern Assessments</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Everything you need to conduct secure, efficient, and insightful examinations in one unified platform.
+    <section id="features" className="bg-muted/30 py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-6 md:px-8">
+        {/* Section Header */}
+        <div className="mb-16 text-center md:mb-20">
+          <p className="text-primary mb-4 text-sm font-semibold uppercase tracking-widest">
+            Features
+          </p>
+          <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            Everything You Need to Assess Smarter
+          </h2>
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-relaxed md:text-xl">
+            A comprehensive toolkit designed for anyone who needs to conduct
+            reliable assessments.
           </p>
         </div>
+
+        {/* Features Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => (
-            <Card key={index} className="transition-shadow hover:shadow-md">
-              <CardHeader>
-                <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-2">
-                  <feature.icon className="text-primary h-6 w-6" />
-                </div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </CardContent>
-            </Card>
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="group rounded-2xl border border-black/[0.08] bg-white/80 p-6 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:border-violet-500/30  dark:border-white/[0.08] dark:bg-white/5 dark:hover:border-violet-400/20"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400">
+                <feature.icon className="h-6 w-6" />
+              </div>
+              <h3 className="mt-4 mb-2 text-lg font-semibold">
+                {feature.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>

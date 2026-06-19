@@ -217,7 +217,7 @@ export default async function ExamSubmissionsPage({
         </div>
       </div>
 
-      <div className="bg-card text-card-foreground rounded-xl border p-4 shadow">
+      <div className="bg-card text-card-foreground rounded-xl border p-4 ">
         <SubmissionsTable data={data} />
       </div>
     </div>

@@ -320,7 +320,7 @@ export function GradeSubmission({
               key={question.id}
               className={
                 answer?.score === null && question.type === "DESCRIPTIVE"
-                  ? "border-amber-500/50 shadow-sm"
+                  ? "border-amber-500/50 "
                   : ""
               }
             >
@@ -446,7 +446,7 @@ export function GradeSubmission({
                                   {opt.text && <span>{opt.text}</span>}
                                   {opt.imageUrl && (
                                     // eslint-disable-next-line @next/next/no-img-element
-                                    <img src={opt.imageUrl} alt="Option" className="max-h-32 rounded-md border shadow-sm" />
+                                    <img src={opt.imageUrl} alt="Option" className="max-h-32 rounded-md border " />
                                   )}
                                 </div>
                               </div>
@@ -694,7 +694,7 @@ export function GradeSubmission({
       </div>
 
       {/* Right Column: Sticky Dashboard */}
-      <div className="bg-card text-card-foreground order-first flex flex-col overflow-hidden rounded-xl border shadow-sm lg:sticky lg:top-20 lg:order-none lg:col-span-1">
+      <div className="bg-card text-card-foreground order-first flex flex-col overflow-hidden rounded-xl border  lg:sticky lg:top-20 lg:order-none lg:col-span-1">
         <div className="bg-muted/20 border-b p-4 flex items-center justify-between sm:p-6">
           <h3 className="flex items-center gap-2 font-semibold">
             <GraduationCap className="text-primary h-5 w-5" />

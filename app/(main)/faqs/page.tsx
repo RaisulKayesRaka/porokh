@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FAQAccordion } from "@/components/faq-accordion";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "FAQs — Porokh",
@@ -79,7 +78,7 @@ const faqCategories = [
       },
       {
         q: "How do examinees join a room?",
-        a: "Examinees click \u201cJoin Room\u201d from their dashboard and enter the room code shared by the examiner. Once joined, they can see all published exams in that room.",
+        a: 'Examinees click \u201cJoin Room\u201d from their dashboard and enter the room code shared by the examiner. Once joined, they can see all published exams in that room.',
       },
       {
         q: "Can multiple examiners manage the same room?",
@@ -125,36 +124,44 @@ const faqCategories = [
 
 export default function FAQsPage() {
   return (
-    <div className="bg-background w-full">
-      <div className="container mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
-        {/* Header */}
-        <div className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
-          <p className="text-muted-foreground mb-3 text-sm font-semibold uppercase tracking-widest">
-            Support
-          </p>
-          <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tight sm:text-5xl">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Everything you need to know about using Porokh. Can&apos;t find what
-            you&apos;re looking for? Feel free to reach out.
-          </p>
+    <div className="w-full">
+      {/* Header */}
+      <section className="bg-gradient-to-b from-violet-50/50 to-background dark:from-violet-950/20 dark:to-background py-20 md:py-28">
+        <div className="container mx-auto max-w-7xl px-6 md:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-primary mb-4 text-sm font-semibold uppercase tracking-widest">
+              SUPPORT
+            </p>
+            <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              Frequently Asked Questions
+            </h1>
+            <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-relaxed">
+              Everything you need to know about using Porokh. Can&apos;t find
+              what you&apos;re looking for? Feel free to reach out.
+            </p>
+          </div>
         </div>
+      </section>
 
-        {/* FAQ Sections */}
-        <FAQAccordion categories={faqCategories} />
+      {/* FAQ Content */}
+      <section className="py-16 md:py-20">
+        <div className="container mx-auto max-w-4xl px-6 md:px-8">
+          <FAQAccordion categories={faqCategories} />
+        </div>
+      </section>
 
-        {/* CTA */}
-        <Card className="mt-16 text-center md:mt-20">
-          <CardContent className="p-8 md:p-12 flex flex-col items-center gap-4">
-            <h2 className="text-foreground text-2xl font-bold">
+      {/* CTA Card */}
+      <section className="pb-24 md:pb-32">
+        <div className="container mx-auto max-w-4xl px-6 md:px-8">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="text-foreground mb-4 text-2xl font-bold">
               Still have questions?
             </h2>
-            <p className="text-muted-foreground max-w-md">
+            <p className="text-muted-foreground mx-auto mb-8 max-w-md">
               Jump right in and explore the platform yourself — it&apos;s the
               fastest way to find answers.
             </p>
-            <div className="flex gap-3">
+            <div className="flex items-center justify-center gap-4">
               <Button asChild size="lg">
                 <Link href="/signup">Get Started Free</Link>
               </Button>
@@ -162,9 +169,9 @@ export default function FAQsPage() {
                 <Link href="/features">View Features</Link>
               </Button>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

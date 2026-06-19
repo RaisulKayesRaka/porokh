@@ -173,7 +173,7 @@ export function QuestionBuilder({
           questions.map((q, index) => {
             if (editingId === q.id) {
               return (
-                <Card key={q.id} className="border-primary/50 shadow-md">
+                <Card key={q.id} className="border-primary/50 ">
                   <CardHeader>
                     <CardTitle>Edit Question {index + 1}</CardTitle>
                   </CardHeader>
@@ -277,7 +277,7 @@ export function QuestionBuilder({
                           {opt.imageUrl && (
                             <div className="ml-7">
                               {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img src={opt.imageUrl} alt="Option image" className="max-h-24 rounded-md border shadow-sm" />
+                              <img src={opt.imageUrl} alt="Option image" className="max-h-24 rounded-md border " />
                             </div>
                           )}
                         </li>
@@ -328,7 +328,7 @@ export function QuestionBuilder({
 
       {/* Add Question Form */}
       {isAdding ? (
-        <Card className="border-primary/50 shadow-md">
+        <Card className="border-primary/50 ">
           <CardHeader>
             <CardTitle>Add New Question</CardTitle>
             <CardDescription>

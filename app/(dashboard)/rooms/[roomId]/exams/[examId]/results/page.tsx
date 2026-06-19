@@ -317,7 +317,7 @@ export default async function ExamResultsPage({
                                   {opt.text && <span>{opt.text}</span>}
                                   {opt.imageUrl && (
                                     // eslint-disable-next-line @next/next/no-img-element
-                                    <img src={opt.imageUrl} alt="Option" className="max-h-32 rounded-md border shadow-sm" />
+                                    <img src={opt.imageUrl} alt="Option" className="max-h-32 rounded-md border " />
                                   )}
                                 </div>
                               </div>

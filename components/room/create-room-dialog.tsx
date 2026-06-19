@@ -112,13 +112,13 @@ export function CreateRoomDialog({
                 </FieldLabel>
                 <FieldContent>
                   <div
-                    className="relative rounded-md border border-input bg-transparent shadow-xs focus-within:ring-[3px] focus-within:ring-ring/50 focus-within:border-ring transition-[color,box-shadow]"
+                    className="relative rounded-md border border-input bg-transparent  focus-within:ring-[3px] focus-within:ring-ring/50 focus-within:border-ring transition-colors"
                     aria-invalid={!!errors.description}
                   >
                     <Textarea
                       id="description"
                       placeholder="e.g. Midterm examination room."
-                      className="min-h-[120px] resize-none overflow-y-auto border-0 focus-visible:ring-0 shadow-none pb-8 bg-transparent"
+                      className="min-h-[120px] resize-none overflow-y-auto border-0 focus-visible:ring-0  pb-8 bg-transparent"
                       disabled={isSubmitting}
                       maxLength={70}
                       {...register("description")}
