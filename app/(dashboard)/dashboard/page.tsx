@@ -88,18 +88,18 @@ export default async function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className={`bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl   transition-all duration-300 ${activeExams.length > 0 ? "border-green-500/30 bg-green-500/5 dark:bg-green-500/10 hover:border-green-500/50" : "hover:border-violet-500/30 dark:hover:border-violet-400/20"}`}>
+          <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardDescription className={`text-sm font-medium ${activeExams.length > 0 ? "text-green-700 dark:text-green-400" : ""}`}>
+              <CardDescription className="text-sm font-medium">
                 Active Exams
               </CardDescription>
-              <Zap className={`h-4 w-4 ${activeExams.length > 0 ? "text-green-500" : "text-muted-foreground"}`} />
+              <Zap className="h-4 w-4 text-violet-500" />
             </CardHeader>
             <CardContent>
-              <p className={`text-3xl font-bold ${activeExams.length > 0 ? "text-green-700 dark:text-green-400" : ""}`}>
+              <p className="text-3xl font-bold text-violet-600 dark:text-violet-400">
                 {activeExams.length}
               </p>
-              <p className={`text-xs ${activeExams.length > 0 ? "text-green-600/70 dark:text-green-400/70" : "text-muted-foreground"}`}>
+              <p className="text-xs text-muted-foreground">
                 live right now
               </p>
             </CardContent>
@@ -139,7 +139,7 @@ export default async function DashboardPage() {
 
                 return (
                   <Link key={exam.id} href={`/rooms/${exam.roomId}/exams/${exam.id}`}>
-                    <Card className="group bg-white/80 dark:bg-white/5 backdrop-blur-xl border-green-500/30 dark:border-green-500/20 rounded-2xl   hover:-translate-y-1 transition-all duration-300">
+                    <Card className="group bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300">
                       <CardHeader className="pb-2">
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">

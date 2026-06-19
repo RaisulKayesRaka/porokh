@@ -80,21 +80,21 @@ export default function FeaturesPage() {
   return (
     <div className="w-full">
       {/* Header */}
-      <section className="bg-gradient-to-b from-violet-50/50 to-background dark:from-violet-950/20 dark:to-background py-20 md:py-28">
+      <section className="bg-gradient-to-b from-violet-50/50 to-background dark:from-violet-950/20 dark:to-background py-16 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-primary mb-4 text-sm font-semibold uppercase tracking-widest">
               PLATFORM CAPABILITIES
             </p>
-            <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="text-foreground mb-6 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
               Everything You Need to{" "}
-              <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-blue-500 dark:from-violet-400 dark:via-indigo-400 dark:to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-violet-700 to-violet-400 dark:from-violet-300 dark:to-violet-500 bg-clip-text text-transparent">
                 Conduct Exams
               </span>
             </h1>
             <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-relaxed">
               Porokh comes packed with features designed for examiners and
-              examinees alike. From AI grading to real-time proctoring — we've
+              examinees alike. From AI grading to real-time proctoring — we&apos;ve
               got you covered.
             </p>
           </div>
@@ -102,7 +102,7 @@ export default function FeaturesPage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 md:py-24">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => {
@@ -132,7 +132,7 @@ export default function FeaturesPage() {
       <section className="py-16">
         <div className="container mx-auto max-w-7xl px-6 md:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-foreground mb-4 text-3xl font-bold tracking-tight">
+            <h2 className="text-foreground mb-4 text-3xl font-semibold tracking-tight">
               Ready to get started?
             </h2>
             <p className="text-muted-foreground mb-8 text-lg">

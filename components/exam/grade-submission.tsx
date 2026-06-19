@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { gradeAnswer, applyPenalty, saveOverallFeedback, togglePublishSubmission } from "@/app/actions/grading";
-import { aiGradeDescriptiveAnswer } from "@/app/actions/ai-grading";
+import { aiGradeDescriptiveAnswer, generateAiPersonalizedFeedback } from "@/app/actions/ai-grading";
 import {
   Question,
   Answer,
@@ -105,6 +105,20 @@ export function GradeSubmission({
   const [isSavingOverallFeedback, setIsSavingOverallFeedback] = useState(false);
 
   const [isPublishing, setIsPublishing] = useState(false);
+  const [isGeneratingFeedback, setIsGeneratingFeedback] = useState(false);
+
+  const handleGenerateAiFeedback = async () => {
+    setIsGeneratingFeedback(true);
+    const result = await generateAiPersonalizedFeedback(submission.id);
+    setIsGeneratingFeedback(false);
+
+    if (result.error) {
+      toast.error(result.error.message || "Failed to generate AI feedback.");
+    } else if (result.feedback) {
+      setOverallFeedback(result.feedback);
+      toast.info("AI feedback generated! Please review and click 'Save Overall Feedback' to confirm.");
+    }
+  };
 
   // Local state to manage scores before saving
   const [scores, setScores] = useState<Record<string, number>>(() => {
@@ -869,9 +883,21 @@ export function GradeSubmission({
             </div>
 
             <div className="flex flex-col gap-2 border-t pt-4">
-              <span className="text-sm font-medium flex items-center gap-1">
-                Overall Feedback
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium flex items-center gap-1">
+                  Overall Feedback
+                </span>
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  className="border-violet-500/30 text-violet-600 hover:bg-violet-500/10 dark:text-violet-400 h-7 text-xs"
+                  onClick={handleGenerateAiFeedback}
+                  disabled={isGeneratingFeedback}
+                >
+                  <Sparkles className="mr-1.5 h-3 w-3" />
+                  {isGeneratingFeedback ? "Generating..." : "Generate with AI"}
+                </Button>
+              </div>
               <Textarea
                 placeholder="Leave a final cohesive comment for the examinee here..."
                 value={overallFeedback}

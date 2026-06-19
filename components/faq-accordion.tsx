@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion";
 
 type FAQCategory = {
-  category: string;
+  category?: string;
   questions: { q: string; a: string }[];
 };
 
@@ -17,9 +17,11 @@ export function FAQAccordion({ categories }: { categories: FAQCategory[] }) {
     <div className="space-y-12">
       {categories.map((cat, catIndex) => (
         <div key={catIndex}>
-          <h2 className="text-foreground text-xl font-bold tracking-tight mb-4">
-            {cat.category}
-          </h2>
+          {cat.category && (
+            <h2 className="text-foreground text-xl font-semibold tracking-tight mb-4">
+              {cat.category}
+            </h2>
+          )}
           <Accordion type="multiple" className="w-full">
             {cat.questions.map((faq, faqIndex) => (
               <AccordionItem

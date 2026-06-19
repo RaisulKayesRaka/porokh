@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ModeToggle } from "@/components/mode-toggle";
+
 import { useSession, signOut } from "@/lib/auth-client";
 import { Menu, LayoutDashboard, User, LogOut } from "lucide-react";
 import {
@@ -23,12 +23,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export function NavBar() {
   const { data: session } = useSession();
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleSignOut = async () => {
     await signOut();
@@ -53,7 +55,7 @@ export function NavBar() {
               alt="Porokh Logo"
               width={26}
               height={26}
-              className="invert dark:invert-0 transition-transform duration-300 group-hover:scale-110"
+              className="transition-transform duration-300 group-hover:scale-110"
             />
             <span className="text-xl font-bold tracking-tight">Porokh</span>
           </Link>
@@ -61,80 +63,88 @@ export function NavBar() {
 
         {/* Desktop Navigation — Centered */}
         <div className="hidden flex-1 items-center justify-center gap-1 md:flex">
-          {routes.map((route) => (
-            <Button
-              key={route.href}
-              asChild
-              variant="ghost"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Link href={route.href}>{route.name}</Link>
-            </Button>
-          ))}
+          {routes.map((route) => {
+            const isActive = pathname === route.href;
+            return (
+              <Button
+                key={route.href}
+                asChild
+                variant="ghost"
+                className={cn(
+                  "transition-colors",
+                  isActive
+                    ? "text-primary font-semibold hover:text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                <Link href={route.href}>{route.name}</Link>
+              </Button>
+            );
+          })}
         </div>
 
-        {/* Right Side: ModeToggle + Auth */}
+        {/* Right Side: Auth */}
         <div className="flex flex-1 items-center justify-end gap-2 md:gap-3">
-          <ModeToggle />
-
           {session ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="relative h-9 w-9 rounded-full"
-                >
-                  <Avatar className="h-9 w-9 ring-2 ring-violet-500/20  hover:ring-violet-500/40">
-                    <AvatarImage
-                      src={session.user.image ?? ""}
-                      alt={session.user.name}
-                    />
-                    <AvatarFallback className="bg-violet-100 text-violet-700 dark:bg-violet-500/20 dark:text-violet-300 text-sm font-semibold">
-                      {session.user.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")
-                        .toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
-                <DropdownMenuLabel className="font-normal">
-                  <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">
-                      {session.user.name}
-                    </p>
-                    <p className="text-xs leading-none text-muted-foreground">
-                      {session.user.email}
-                    </p>
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/dashboard" className="cursor-pointer">
-                    <LayoutDashboard className="mr-2 h-4 w-4" />
-                    <span>Dashboard</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/account" className="cursor-pointer">
-                    <User className="mr-2 h-4 w-4" />
-                    <span>Account</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  onClick={handleSignOut}
-                  className="cursor-pointer text-destructive focus:text-destructive"
-                >
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div className="hidden md:block">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="relative h-9 w-9 rounded-full"
+                  >
+                    <Avatar className="h-9 w-9 ring-2 ring-violet-500/20  hover:ring-violet-500/40">
+                      <AvatarImage
+                        src={session.user.image ?? ""}
+                        alt={session.user.name}
+                      />
+                      <AvatarFallback className="bg-violet-100 text-violet-700 dark:bg-violet-500/20 dark:text-violet-300 text-sm font-semibold">
+                        {session.user.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")
+                          .toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56" align="end" forceMount>
+                  <DropdownMenuLabel className="font-normal">
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium leading-none">
+                        {session.user.name}
+                      </p>
+                      <p className="text-xs leading-none text-muted-foreground">
+                        {session.user.email}
+                      </p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link href="/dashboard" className="cursor-pointer">
+                      <LayoutDashboard className="mr-2 h-4 w-4" />
+                      <span>Dashboard</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/account" className="cursor-pointer">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Account</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    onClick={handleSignOut}
+                    className="cursor-pointer text-destructive focus:text-destructive"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           ) : (
-            <div className="hidden items-center gap-2 sm:flex">
+            <div className="hidden items-center gap-2 md:flex">
               <Button
                 asChild
                 variant="ghost"
@@ -170,16 +180,24 @@ export function NavBar() {
                 <div className="flex flex-col gap-6 py-8 px-2">
                   {/* Nav Links */}
                   <div className="flex flex-col gap-1">
-                    {routes.map((route) => (
-                      <Link
-                        key={route.href}
-                        href={route.href}
-                        onClick={() => setOpen(false)}
-                        className="text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg px-3 py-2.5 text-base font-medium transition-colors"
-                      >
-                        {route.name}
-                      </Link>
-                    ))}
+                    {routes.map((route) => {
+                      const isActive = pathname === route.href;
+                      return (
+                        <Link
+                          key={route.href}
+                          href={route.href}
+                          onClick={() => setOpen(false)}
+                          className={cn(
+                            "rounded-lg px-3 py-2.5 text-base transition-colors",
+                            isActive
+                              ? "text-primary font-semibold hover:bg-muted/50"
+                              : "text-muted-foreground hover:bg-muted/50 hover:text-foreground font-medium"
+                          )}
+                        >
+                          {route.name}
+                        </Link>
+                      );
+                    })}
                   </div>
 
                   {/* Auth Section */}

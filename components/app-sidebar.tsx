@@ -79,7 +79,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     alt="Porokh Logo"
                     width={20}
                     height={20}
-                    className="invert dark:invert-0"
+                    className=""
                   />
                 </div>
                 <span className="truncate font-bold text-lg">Porokh</span>

@@ -109,7 +109,7 @@ export default async function RoomsPage() {
                 return (
                   <Card
                     key={room.id}
-                    className="group relative flex flex-col bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl   hover:-translate-y-1 hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300"
+                    className="group relative flex flex-col bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300"
                   >
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between gap-2">

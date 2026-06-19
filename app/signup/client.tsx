@@ -95,30 +95,58 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center p-4 font-sans overflow-hidden bg-gradient-to-b from-violet-50/50 to-background dark:from-violet-950/20 dark:to-background">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center p-4 sm:p-8 font-sans overflow-hidden bg-gradient-to-b from-violet-50/50 to-background dark:from-violet-950/20 dark:to-background">
       <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(124,58,237,0.08)_1px,_transparent_1px)] dark:bg-[radial-gradient(circle,_rgba(139,92,246,0.04)_1px,_transparent_1px)] bg-[size:24px_24px]" />
-      <div className="animate-fade-up z-10 w-full max-w-sm">
-        <Card className="w-full max-w-sm bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08]  rounded-2xl">
-        <CardHeader>
-          <div className="mt-2 mb-4 flex w-full justify-center">
+      
+      <div className="animate-fade-up z-10 w-full max-w-5xl flex flex-col lg:flex-row bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-3xl overflow-hidden">
+        
+        {/* Left Panel - Branding */}
+        <div className="hidden lg:flex flex-1 flex-col justify-between relative bg-violet-600 dark:bg-violet-900 p-12 text-white">
+          <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[size:24px_24px]" />
+          
+          <div className="relative z-10">
             <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/porokh.svg"
                 alt="Porokh Logo"
                 width={32}
                 height={32}
-                className="invert dark:invert-0"
+                className="brightness-0 invert"
               />
               <span className="text-3xl font-bold tracking-tight">Porokh</span>
             </Link>
           </div>
-          <CardTitle className="text-center text-2xl">
-            {step === "form" && "Create an account"}
-            {step === "otp" && "Verify your email"}
-            {step === "success" && "Email verified!"}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+
+          <div className="relative z-10">
+            <h2 className="text-4xl font-semibold mb-6">Join the Future of Evaluation</h2>
+            <p className="text-violet-200 text-lg leading-relaxed">
+              Create an account to build secure, AI-graded descriptive exams and invite students to your personalized rooms.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Panel - Form */}
+        <div className="flex-1 p-8 sm:p-12 flex flex-col justify-center">
+          <div className="w-full max-w-sm mx-auto">
+            <div className="mb-8 lg:hidden flex w-full justify-center">
+              <Link href="/" className="flex items-center space-x-2">
+                <Image
+                  src="/porokh.svg"
+                  alt="Porokh Logo"
+                  width={32}
+                  height={32}
+                  className=""
+                />
+                <span className="text-3xl font-bold tracking-tight">Porokh</span>
+              </Link>
+            </div>
+            <div className="mb-8 text-center lg:text-left">
+              <h1 className="text-2xl font-semibold tracking-tight">
+                {step === "form" && "Create an account"}
+                {step === "otp" && "Verify your email"}
+                {step === "success" && "Account Created!"}
+              </h1>
+            </div>
           {step === "form" && (
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col gap-6">
@@ -160,6 +188,7 @@ export default function SignupPage() {
                     <InputGroupAddon align="inline-end">
                       <button
                         type="button"
+                        aria-label="Toggle password visibility"
                         className="text-muted-foreground hover:text-foreground flex h-full cursor-pointer items-center justify-center px-3 transition-colors"
                         onClick={() => setShowPassword(!showPassword)}
                       >
@@ -281,9 +310,8 @@ export default function SignupPage() {
               </Button>
             </div>
           )}
-        </CardContent>
-        <CardFooter>
-          <div className="text-muted-foreground w-full text-center text-sm">
+          
+          <div className="mt-8 text-muted-foreground w-full text-center text-sm">
             Already have an account?{" "}
             <Link
               href="/login"
@@ -292,9 +320,9 @@ export default function SignupPage() {
               Log in
             </Link>
           </div>
-        </CardFooter>
-      </Card>
+        </div>
       </div>
+    </div>
     </div>
   );
 }

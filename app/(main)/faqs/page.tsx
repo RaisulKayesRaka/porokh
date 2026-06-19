@@ -126,13 +126,13 @@ export default function FAQsPage() {
   return (
     <div className="w-full">
       {/* Header */}
-      <section className="bg-gradient-to-b from-violet-50/50 to-background dark:from-violet-950/20 dark:to-background py-20 md:py-28">
+      <section className="bg-gradient-to-b from-violet-50/50 to-background dark:from-violet-950/20 dark:to-background py-16 md:py-24">
         <div className="container mx-auto max-w-7xl px-6 md:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-primary mb-4 text-sm font-semibold uppercase tracking-widest">
               SUPPORT
             </p>
-            <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="text-foreground mb-6 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
               Frequently Asked Questions
             </h1>
             <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-relaxed">
@@ -144,17 +144,19 @@ export default function FAQsPage() {
       </section>
 
       {/* FAQ Content */}
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto max-w-4xl px-6 md:px-8">
-          <FAQAccordion categories={faqCategories} />
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-7xl px-6 md:px-8">
+          <div className="mx-auto max-w-4xl">
+            <FAQAccordion categories={faqCategories} />
+          </div>
         </div>
       </section>
 
       {/* CTA Card */}
       <section className="pb-24 md:pb-32">
-        <div className="container mx-auto max-w-4xl px-6 md:px-8">
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-foreground mb-4 text-2xl font-bold">
+        <div className="container mx-auto max-w-7xl px-6 md:px-8">
+          <div className="mx-auto max-w-4xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="text-foreground mb-4 text-2xl font-semibold">
               Still have questions?
             </h2>
             <p className="text-muted-foreground mx-auto mb-8 max-w-md">

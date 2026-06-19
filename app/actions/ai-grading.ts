@@ -228,3 +228,92 @@ Return your evaluation for each criterion.`;
   }
 }
 
+export async function generateAiPersonalizedFeedback(submissionId: string) {
+  try {
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session?.user) return { error: { message: "Unauthorized." } };
+
+    const submission = await prisma.examSubmission.findUnique({
+      where: { id: submissionId },
+      include: {
+        examinee: true,
+        exam: {
+          include: {
+            room: true,
+            questions: { orderBy: { order: "asc" } },
+          },
+        },
+        answers: true,
+      },
+    });
+
+    if (!submission) return { error: { message: "Submission not found." } };
+
+    const membership = await prisma.roomMember.findUnique({
+      where: {
+        roomId_userId: {
+          roomId: submission.exam.roomId,
+          userId: session.user.id,
+        },
+      },
+    });
+
+    if (submission.exam.room.ownerId !== session.user.id && (!membership || membership.role !== "EXAMINER")) {
+      return { error: { message: "Forbidden: Only examiners can generate feedback." } };
+    }
+
+    const totalPoints = submission.exam.questions.reduce((sum, q) => sum + q.points, 0);
+    const score = submission.score || 0;
+    const percentage = totalPoints > 0 ? Math.round((score / totalPoints) * 100) : 0;
+
+    let performanceContext = `The examinee, ${submission.examinee.name}, scored ${score} out of ${totalPoints} points (${percentage}%).\n\nHere is a breakdown of their performance:\n`;
+
+    submission.exam.questions.forEach((q, i) => {
+      const ans = submission.answers.find(a => a.questionId === q.id);
+      performanceContext += `\nQuestion ${i + 1}: ${q.text.replace(/<[^>]*>?/gm, '')}\n`;
+      performanceContext += `Type: ${q.type}, Points Available: ${q.points}\n`;
+      
+      if (!ans) {
+        performanceContext += `Examinee did not answer.\n`;
+        return;
+      }
+      
+      if (q.type === 'MULTIPLE_CHOICE') {
+        const options = (Array.isArray(q.options) ? q.options : []) as { id: string; text?: string }[];
+        const selectedOption = options.find(opt => opt.id === ans.optionValue);
+        const correctOption = options.find(opt => opt.id === q.correctOption);
+        performanceContext += `Examinee selected: ${selectedOption?.text || ans.optionValue}\n`;
+        performanceContext += `Correct answer: ${correctOption?.text || q.correctOption}\n`;
+      } else {
+        performanceContext += `Examinee answered: ${ans.textValue?.replace(/<[^>]*>?/gm, '') || '(No text)'}\n`;
+        if (q.correctOption) {
+           performanceContext += `Model answer/Expected: ${q.correctOption}\n`;
+        }
+      }
+      performanceContext += `Points Awarded: ${ans.score || 0} / ${q.points}\n`;
+    });
+
+    const promptText = `You are a supportive and constructive exam grading assistant. 
+Based on the examinee's performance details provided below, generate a cohesive, personalized feedback report.
+The feedback should be addressed directly to the examinee (using "you").
+Do not restate their exact answers, but rather identify their strengths, point out the specific topics or concepts they struggled with, and provide actionable advice on what they should study to improve.
+Keep the tone encouraging.
+
+Performance Details:
+${performanceContext}
+
+Output ONLY the raw text of the feedback. Do not include markdown formatting or extra conversational fluff like "Here is the feedback:".`;
+
+    const { text } = await generateText({
+      model: google("gemini-3.1-flash-lite"),
+      prompt: promptText,
+    });
+
+    const newFeedback = text.trim();
+
+    return { feedback: newFeedback };
+  } catch (error) {
+    console.error("Error generating AI feedback:", error);
+    return { error: { message: "AI feedback generation failed." } };
+  }
+}

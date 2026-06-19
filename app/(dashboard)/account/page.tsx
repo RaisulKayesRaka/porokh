@@ -1,6 +1,7 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { AppHeader } from "@/components/app-header";
 
 import {
   Card,
@@ -31,16 +32,7 @@ export default async function AccountPage() {
 
   return (
     <div className="flex h-full w-full flex-col">
-      <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 border-b px-4 backdrop-blur">
-        <SidebarTrigger className="-ml-1" />
-        <Separator orientation="vertical" className="mr-2 h-4" />
-        <h1 className="truncate text-xl font-bold tracking-tight">
-          Account Settings
-        </h1>
-        <div className="ml-auto">
-          <ModeToggle />
-        </div>
-      </header>
+      <AppHeader title="Account Settings" />
 
       <div className="flex flex-col space-y-8 p-6 md:p-8">
         <div className="mx-auto w-full max-w-3xl space-y-8">
@@ -53,7 +45,7 @@ export default async function AccountPage() {
 
           <Separator />
 
-          <Card>
+          <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl">
             <CardHeader>
               <CardTitle>Profile Image</CardTitle>
               <CardDescription>
@@ -65,7 +57,7 @@ export default async function AccountPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl">
             <CardHeader>
               <CardTitle>Display Name</CardTitle>
               <CardDescription>
@@ -77,7 +69,7 @@ export default async function AccountPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl">
             <CardHeader>
               <CardTitle>Email Address</CardTitle>
               <CardDescription>
@@ -89,7 +81,7 @@ export default async function AccountPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl">
             <CardHeader>
               <CardTitle>Security</CardTitle>
               <CardDescription>
@@ -101,7 +93,7 @@ export default async function AccountPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-destructive/50">
+          <Card className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border-destructive/50">
             <CardHeader>
               <CardTitle className="text-destructive">Danger Zone</CardTitle>
               <CardDescription>

@@ -1,11 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-b from-violet-50/80 via-background to-background dark:from-violet-950/30 dark:via-background dark:to-background">
+    <section className="relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-violet-50/80 via-background to-background dark:from-violet-950/30 dark:via-background dark:to-background">
       {/* Grid dot pattern overlay */}
       <div
         className="absolute inset-0 bg-[radial-gradient(circle,_rgba(124,58,237,0.12)_1px,_transparent_1px)] dark:bg-[radial-gradient(circle,_rgba(139,92,246,0.06)_1px,_transparent_1px)] bg-[size:24px_24px]"
@@ -18,7 +17,7 @@ export function Hero() {
         aria-hidden="true"
       />
       <div
-        className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-indigo-400/20 dark:bg-indigo-500/10 blur-3xl animate-pulse-glow"
+        className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-violet-400/20 dark:bg-violet-500/10 blur-3xl animate-pulse-glow"
         style={{ animationDelay: "2s" }}
         aria-hidden="true"
       />
@@ -29,7 +28,7 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto max-w-7xl px-6 md:px-8 flex flex-col items-center text-center py-20 md:py-28">
+      <div className="relative z-10 container mx-auto max-w-7xl px-6 md:px-8 flex flex-col items-center text-center py-16 md:py-24">
         {/* Badge */}
         <div
           className="animate-fade-up inline-flex items-center gap-2 border border-violet-200 dark:border-violet-500/20 bg-violet-50 dark:bg-violet-500/10 text-violet-700 dark:text-violet-300 rounded-full px-4 py-1.5 text-sm font-medium"
@@ -42,12 +41,11 @@ export function Hero() {
           AI-Powered Assessment Platform
         </div>
 
-        {/* Headline */}
         <h1
-          className="animate-fade-up mt-8 text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]"
+          className="animate-fade-up mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.1]"
           style={{ animationDelay: "100ms" }}
         >
-          <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-blue-500 dark:from-violet-400 dark:via-indigo-400 dark:to-cyan-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-violet-700 to-violet-400 dark:from-violet-300 dark:to-violet-500 bg-clip-text text-transparent">
             Smarter Exams.
           </span>
           <br />
@@ -83,41 +81,6 @@ export function Hero() {
           </Button>
         </div>
 
-        {/* Dashboard Mockup */}
-        <div
-          className="animate-fade-up mt-16 md:mt-20 w-full max-w-5xl mx-auto"
-          style={{ animationDelay: "400ms" }}
-        >
-          <div className="[perspective:2000px]">
-            <div className="[transform:rotateX(4deg)] transition-transform duration-700 hover:[transform:rotateX(0deg)]">
-              <div className="   rounded-2xl overflow-hidden border border-black/10 dark:border-white/10">
-                {/* Browser Chrome */}
-                <div className="rounded-t-2xl bg-gray-800 dark:bg-gray-900 px-4 py-3 flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-400" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <div className="w-3 h-3 rounded-full bg-green-400" />
-                  <div className="flex-1 ml-4 h-6 rounded-md bg-gray-700/50 flex items-center px-3">
-                    <span className="text-xs text-gray-400">
-                      porokh.vercel.app/rooms
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content Area */}
-                <div className="rounded-b-2xl border-t border-black/5 dark:border-white/5 overflow-hidden flex">
-                  <Image
-                    src="/rooms_image.jpeg"
-                    alt="Porokh Dashboard"
-                    width={1920}
-                    height={1080}
-                    className="w-full h-auto object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
