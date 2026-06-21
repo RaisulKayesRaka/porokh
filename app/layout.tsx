@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const poppins = Poppins({ subsets: ["latin"], variable: "--font-sans", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,11 +34,16 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        poppins.variable,
+      )}
     >
-      <body
-        className={`font-sans flex min-h-screen flex-col antialiased`}
-      >
+      <body className={`flex min-h-screen flex-col font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
