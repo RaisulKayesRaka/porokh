@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -18,6 +19,11 @@ import { UpdateImageForm } from "@/components/user/update-image-form";
 import { ChangeEmailForm } from "@/components/user/change-email-form";
 import { ChangePasswordForm } from "@/components/user/change-password-form";
 import { DeleteAccountDialog } from "@/components/user/delete-account-dialog";
+
+export const metadata: Metadata = {
+  title: "Account Settings",
+  description: "Manage your profile and security settings",
+};
 
 export default async function AccountPage() {
   const session = await auth.api.getSession({

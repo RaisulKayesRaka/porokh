@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import LoginClientPage from "./client";
 
 export const metadata: Metadata = {
-  title: "Login | Porokh",
+  title: "Login",
   description: "Login to your Porokh account",
 };
 

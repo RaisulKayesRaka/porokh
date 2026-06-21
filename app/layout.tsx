@@ -18,7 +18,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Porokh",
+  title: {
+    template: "%s | Porokh",
+    default: "Porokh",
+  },
   description: "AI-Assisted Online Examination and Evaluation System",
 };
 

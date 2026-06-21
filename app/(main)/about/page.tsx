@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
@@ -12,6 +13,11 @@ import {
   Target,
   ArrowRight
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn more about the team and mission behind Porokh.",
+};
 
 export default function AboutPage() {
   return (

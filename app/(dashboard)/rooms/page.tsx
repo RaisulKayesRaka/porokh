@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import prisma from "@/lib/prisma";
@@ -28,6 +29,11 @@ import { AppHeader } from "@/components/app-header";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
+
+export const metadata: Metadata = {
+  title: "Rooms",
+  description: "Manage your rooms and participants",
+};
 
 export default async function RoomsPage() {
   const session = await auth.api.getSession({

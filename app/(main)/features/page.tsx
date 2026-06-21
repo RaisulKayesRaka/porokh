@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Features — Porokh",
+  title: "Features",
   description:
     "Explore the full range of Porokh platform capabilities — AI-powered grading, proctoring, LaTeX support, analytics, and more.",
 };

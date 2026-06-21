@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { FAQAccordion } from "@/components/faq-accordion";
 
 export const metadata: Metadata = {
-  title: "FAQs — Porokh",
+  title: "FAQs",
   description:
     "Find answers to frequently asked questions about Porokh — the AI-assisted online examination and evaluation platform.",
 };

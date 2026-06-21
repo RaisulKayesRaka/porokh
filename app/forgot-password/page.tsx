@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ForgotPasswordClient from "./client";
 
 export const metadata: Metadata = {
-  title: "Forgot Password | Porokh",
+  title: "Forgot Password",
   description: "Reset your Porokh account password",
 };
 
