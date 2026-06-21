@@ -110,7 +110,7 @@ export default function FeaturesPage() {
               return (
                 <div
                   key={feature.title}
-                  className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl p-6 hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300 hover:scale-[1.02]"
+                  className="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl p-6 hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300"
                 >
                   <div className="bg-violet-100 dark:bg-violet-500/10 text-violet-600 dark:text-violet-400 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                     <Icon className="h-6 w-6" />

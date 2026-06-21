@@ -163,11 +163,11 @@ export default function FAQsPage() {
               Jump right in and explore the platform yourself — it&apos;s the
               fastest way to find answers.
             </p>
-            <div className="flex items-center justify-center gap-4">
-              <Button asChild size="lg">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button asChild size="lg" className="w-full sm:w-auto">
                 <Link href="/signup">Get Started Free</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
                 <Link href="/features">View Features</Link>
               </Button>
             </div>

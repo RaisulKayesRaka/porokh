@@ -211,7 +211,7 @@ export default async function DashboardPage() {
 
                 return (
                   <Link key={exam.id} href={`/rooms/${exam.roomId}/exams/${exam.id}`}>
-                    <Card className="group bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl   hover:-translate-y-1 hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300">
+                    <Card className="group bg-white/80 dark:bg-white/5 backdrop-blur-xl border-black/[0.08] dark:border-white/[0.08] rounded-2xl hover:border-violet-500/30 dark:hover:border-violet-400/20 transition-all duration-300">
                       <CardHeader className="pb-2">
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">
